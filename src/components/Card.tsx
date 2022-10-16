@@ -1,29 +1,26 @@
-import React from 'react'
+import React from "react";
+import { ImagesCard } from "./CardGrid";
 
 interface Props {
-  key: undefined;
-  card: {src: string, id: number, matched: boolean};
-  imgThresh: string;
-  handleChoice: (card: any) => void;
-  flipped: boolean
+  card: ImagesCard;
+  defaultImg: string;
+  handleChoice: (card: ImagesCard) => void;
+  flipped: boolean;
 }
 
 export const Card: React.FC<Props> = ({
-  key, card, imgThresh, handleChoice = () => {}, flipped
+  card,
+  defaultImg,
+  handleChoice = () => {},
+  flipped
 }) => {
+  const onClick = () => {
+    if (!flipped) handleChoice(card);
+  };
 
-const handleClick = (card: any) => {
-  if (!flipped) handleChoice(card)
-}
-
-  return(
-  <div className="card" key={key} onClick={() => handleClick(card.src)}>
-    {
-      flipped ?
-      <img src={card.src}/>
-      :
-      <img src={imgThresh}/>
-    }
-  </div>
-  )
-}
+  return (
+    <div className="card" onClick={onClick}>
+      {flipped ? <img src={card.src} /> : <img src={defaultImg} />}
+    </div>
+  );
+};
