@@ -1,0 +1,8 @@
+.card-grid{
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
+}
+
+img {
+  width: 10em;
+}

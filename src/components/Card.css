@@ -1,0 +1,8 @@
+.card {
+    position: relative;
+  }
+
+.card img {
+  width: 50%;
+  display: block;
+}
