@@ -11,7 +11,7 @@ import Warlord from "../img/warlord.webp";
 import Thresh from "../img/thresh.jpg";
 import { Card } from "./Card";
 
-export type ImagesCard = { src: string; matched: boolean, id?: number };
+export type ImagesCard = { src: string; matched: boolean; id?: number };
 
 const images: ImagesCard[] = [
   { src: Shen, matched: false },
@@ -32,7 +32,7 @@ export const CardGrid: React.FC = () => {
   const shuffle = () => {
     const shuffled = [...images, ...images]
       .sort(() => Math.random() - 0.5)
-      .map((card) => ({ ...card }));
+      .map(card => ({ ...card }));
 
     setCards(shuffled);
   };
@@ -69,6 +69,15 @@ export const CardGrid: React.FC = () => {
       }
     }
   }, [card1, card2]);
+
+  const gameWin = () => {
+    const win: boolean = cards.every(card => card.matched === true);
+    if (win) {
+      alert("vous avez gagné !");
+    }
+  };
+
+  gameWin();
 
   return (
     <div className="card-grid">
