@@ -74,6 +74,7 @@ export const CardGrid: React.FC = () => {
     const win: boolean = cards.every(card => card.matched === true);
     if (win) {
       alert("vous avez gagné !");
+      shuffled();
     }
   };
 
